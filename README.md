@@ -1,6 +1,6 @@
-# VLDB26: Beyond Block-Oriented Semantics - Adaptive Buffer Management Across Heterogeneous Storage
+Beyond Block-Oriented Semantics: An Empirical Study of Buffer Replacement Across Heterogeneous Storage
 
-Repository: https://github.com/anonymousbytes/vldb26
+Repository: https://github.com/anonymousbytes/26_1
 
 ## Project Structure
 
@@ -215,7 +215,7 @@ Apply these settings in:
 To generate comprehensive cache profiling data with all storage types, cache policies, and thread counts, run:
 
 ```bash
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache.sh
 ```
 
@@ -229,7 +229,7 @@ This script executes benchmarks with:
 - **Runs:** 5
 
 The script outputs a timestamped directory containing:
-- Combined benchmark results CSV file: `/home/vldb26/optimized/benchmark/build/cache_profiling_results_<TIMESTAMP>/combined_benchmark_results_with_perf_<TIMESTAMP>.csv`
+- Combined benchmark results CSV file: `/home/26_1/optimized/benchmark/build/cache_profiling_results_<TIMESTAMP>/combined_benchmark_results_with_perf_<TIMESTAMP>.csv`
 - Individual policy result files
 - Performance metrics (`cache-misses,cache-references,cycles,instructions,branch-misses,page-faults,L1-dcache-load-misses,L1-dcache-loads,LLC-load-misses,LLC-loads,L1-icache-load-misses,L1-icache-loads`)
 
@@ -250,7 +250,7 @@ After benchmarking completes, generate publication-quality plots using the plot 
 **Example: Generate Figure 5 (Policy Performance Distribution)**
 
 ```bash
-cd /home/vldb26/plots
+cd /home/26_1/plots
 
 # Using default data file
 python3 plot_figure5.py
@@ -281,7 +281,7 @@ python3 plots/plot_figure9.py --csv "$CSV_FILE"
 
 ```bash
 # 1. Run benchmarks from optimized folder
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache.sh
 
 # 2. Wait for benchmarks to complete (outputs timestamped directory)
@@ -291,7 +291,7 @@ cd /home/vldb26/optimized/benchmark
 CSV_PATH="build/cache_profiling_results_20251003_110829/combined_benchmark_results_with_perf_20251003_110829.csv"
 
 # 4. Generate all plots from the plots directory
-cd /home/vldb26/plots
+cd /home/26_1/plots
 python3 plot_figure5.py --csv "$CSV_PATH"
 python3 plot_figure6.py --csv "$CSV_PATH"
 python3 plot_figure7.py --csv "$CSV_PATH"
@@ -330,7 +330,7 @@ Apply these settings in:
 To run comprehensive YCSB workload benchmarks with all cache types and storage configurations:
 
 ```bash
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache_ycsb.sh
 ```
 
@@ -343,7 +343,7 @@ This script executes YCSB benchmarks with:
 - **Runs:** 5
 
 The script outputs a timestamped directory containing:
-- Combined benchmark results CSV file: `/home/vldb26/optimized/benchmark/build/cache_profiling_results_<TIMESTAMP>/combined_ycsb_benchmark_results_with_perf_<TIMESTAMP>.csv`
+- Combined benchmark results CSV file: `/home/26_1/optimized/benchmark/build/cache_profiling_results_<TIMESTAMP>/combined_ycsb_benchmark_results_with_perf_<TIMESTAMP>.csv`
 - Individual workload and cache policy result files
 - Detailed performance metrics (cache hits/misses, throughput, latency)
 
@@ -352,7 +352,7 @@ The script outputs a timestamped directory containing:
 After benchmarking completes, generate publication-quality plots using:
 
 ```bash
-cd /home/vldb26/plots
+cd /home/26_1/plots
 
 # Using default data file
 python3 plot_figure10.py
@@ -369,19 +369,19 @@ This generates:
 
 ```bash
 # 1. Checkout the YCSB evaluation branch
-cd /home/vldb26
+cd /home/26_1
 git fetch origin eval/4_2_ycsb
 git checkout eval/4_2_ycsb
 
 # 2. Run YCSB benchmarks
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache_ycsb.sh
 
 # 3. Wait for benchmarks to complete (outputs timestamped directory)
 # Note the timestamp from the output, e.g., ycsb_cache_profiling_results_20251010_030225
 
 # 4. Generate YCSB performance plots
-cd /home/vldb26/plots
+cd /home/26_1/plots
 python3 plot_figure10.py --csv /path/to/combined_ycsb_benchmark_results_with_perf_TIMESTAMP.csv
 # e.g., python3 ./plot_figure10.py --csv ./data/combined_ycsb_benchmark_results_with_perf_20251004_051834.csv
 
@@ -407,7 +407,7 @@ git checkout eval/4_2_ycsb_concurrent
 To run YCSB benchmarks with multiple thread configurations for analyzing concurrent behavior:
 
 ```bash
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache_ycsb.sh
 ```
 
@@ -418,7 +418,7 @@ This script executes YCSB benchmarks with various thread counts to evaluate how 
 After benchmarking completes, generate thread scalability visualization plots using:
 
 ```bash
-cd /home/vldb26/plots
+cd /home/26_1/plots
 
 # Using custom concurrent YCSB benchmark CSV file
 python3 plot_figure11.py --csv /path/to/combined_ycsb_benchmark_results_with_perf_TIMESTAMP.csv
@@ -450,7 +450,7 @@ git checkout eval/4_2_ycsb
 To run comprehensive YCSB workload benchmarks with cost-weighted eviction policies:
 
 ```bash
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./profile_and_benchmark_tree_with_cache_ycsb_cwe.sh
 ```
 
@@ -472,7 +472,7 @@ The script outputs a timestamped directory containing:
 After benchmarking completes, generate publication-quality plots using:
 
 ```bash
-cd /home/vldb26/plots
+cd /home/26_1/plots
 
 # Using default data file
 python3 plot_figure12.py
@@ -503,7 +503,7 @@ git checkout eval/4_2_ycsb
 To run comprehensive YCSB workload benchmarks with device-aware cache policies:
 
 ```bash
-cd /home/vldb26/optimized/benchmark
+cd /home/26_1/optimized/benchmark
 ./run_device_aware_ycsb.sh
 ```
 
@@ -526,7 +526,7 @@ The script outputs a timestamped directory containing:
 After benchmarking completes, generate publication-quality plots using:
 
 ```bash
-cd /home/vldb26/plots
+cd /home/26_1/plots
 
 # Using default data file
 python3 plot_figure13.py
@@ -565,7 +565,7 @@ The `docker-run.sh` helper script handles both image building and container exec
 ```bash
 chmod +x ./docker-run.sh
 sudo ./docker-run.sh \
-  --image vldb26:latest \
+  --image 26_1:latest \
   --out /tmp/vldb_results \
   --data /home/skarim/benchmark_data
 ```
@@ -576,7 +576,7 @@ If your environment requires an HTTP proxy to access package repositories:
 
 ```bash
 sudo ./docker-run.sh \
-  --image vldb26:latest \
+  --image 26_1:latest \
   --out /tmp/vldb_results \
   --data /home/skarim/benchmark_data \
   --http-proxy http://proxy_address:port \
@@ -588,7 +588,7 @@ Replace `proxy_address:port` with your actual proxy server details. If your prox
 
 #### Script Options
 
-- `--image NAME` - Docker image tag (default: `vldb26:latest`)
+- `--image NAME` - Docker image tag (default: `26_1:latest`)
 - `--out HOST_DIR` - Host directory where results are saved (default: `./results`)
 - `--data HOST_DIR` - Host directory for benchmark data (default: `$HOME/benchmark_data`)
 - `--http-proxy URL` - HTTP proxy URL for package downloads
